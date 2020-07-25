@@ -150,3 +150,43 @@ $(window).load(function(){
   });
 
 })
+
+// =========================================================
+
+$(document).on("submit", "#comment", function(event) {
+    var $form = $(this);
+    $.post($form.attr("action"), $form.serialize(), function(response) {
+        // ...
+    });
+    event.preventDefault();
+});
+
+/** Fetches tasks from the server and adds them to the DOM. */
+var allTask = new Array();
+allTask.push("Inspiring Work. Well Done");
+
+function loadTasks() {
+  fetch('/list-tasks').then(response => response.json()).then((tasks) => {
+    tasks.forEach((task) => {
+        allTask.push(task.title);
+    })
+  });
+}
+
+window.setInterval(function(){
+    printTasks();
+}, 5000);
+
+function printTasks() {
+  var taskListElement = document.getElementById('task-list');
+  var noElement = allTask.length;
+  var elementid = Math.floor((Math.random() * noElement));
+  taskListElement.innerHTML = allTask[elementid];
+}
+
+/** Tells the server to delete the task. */
+function deleteTask(task) {
+  const params = new URLSearchParams();
+  params.append('id', task.id);
+  fetch('/delete-task', {method: 'POST', body: params});
+}

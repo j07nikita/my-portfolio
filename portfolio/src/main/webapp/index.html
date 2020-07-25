@@ -30,8 +30,7 @@
 
 </head>
 
-<body>
-
+<body onload="loadTasks()">
   <!-- start section navbar -->
   <nav id="main-nav">
     <div class="row">
@@ -75,7 +74,6 @@
   <div id="about" class="paddsection">
     <div class="container">
       <div class="row justify-content-between">
-
         <div class="col-lg-4 ">
           <div class="div-img-bg">
             <div class="about-img">
@@ -103,7 +101,6 @@
     </div>
   </div>
   <!-- end section about us -->
-
 
   <!-- start section services -->
   <div id="services">
@@ -256,17 +253,33 @@
   <!-- start section footer -->
   <div id="footer" class="text-center">
     <div class="container">
-        <div class="contact">
-            <h2 class="section-title text-center mb-30">GET IN TOUCH</h2>
+        <div class="row justify-content-between">
+           <div class="col-lg-4 "> 
+                <div class="contact">
+                    <h2 class="section-title text-center mb-30">GET IN TOUCH</h2>
+                </div>
+                <div class="socials-media text-center">
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.facebook.com/nikita.rungta.31945"><i class="ion-social-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/nikx.rung/"><i class="ion-social-instagram"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/nikita-rungta-141a81149/"><i class="ion-social-linkedin"></i></a></li>
+                        <li><a href="mailto:nikitaiiit07@gmail.com"><i class="ion-email"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="feedback">
+                    <form id="comment" method="POST" action="/new-task">
+                        <textarea placeholder="Remember, be nice!" cols="30" rows="5" name="title" class="form-text-area"></textarea>
+                        <br/>
+                        <button class="form-submit-button" type="submit" name="submit" value="Submit">Yay! Give feedback</button>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <div class="socials-media text-center">
-            <ul class="list-unstyled">
-                <li><a href="https://www.facebook.com/nikita.rungta.31945"><i class="ion-social-facebook"></i></a></li>
-                <li><a href="https://www.instagram.com/nikx.rung/"><i class="ion-social-instagram"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/nikita-rungta-141a81149/"><i class="ion-social-linkedin"></i></a></li>
-                <li><a href="mailto:nikitaiiit07@gmail.com"><i class="ion-email"></i></a></li>
-            </ul>
+    
+        <div class="text-center">
+            <p id="task-list"></p>
         </div>
     </div>
   </div>
